@@ -517,13 +517,14 @@ def keyDiff(d1, d2):
 def valsMatch(d1, d2):
     for k in d1.keys():
         if set(d1[k]) != set(d2[k]):
-            print "Different values for key", v
+            print "Different values for key", k
             return False
     return True
 
 def convertCategories():
     """Convert the old one-image-per-line-of-file category format
-    to the new format where each category is a file with image names"""
+to the new format where each category is a file with image names.
+You still need to create the category dir."""
     imgs = getImageFiles()
     print "Reading old categories"
     (c1,f1) = readCategoriesOld(imgs)
