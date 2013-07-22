@@ -8,9 +8,10 @@
 # Requires Debian package python-pythonmagick
 #
 # To do: Handle SVG?  Don't need thumbnails..
-# Nicer index page?
 # Have some command line options... verbose, clobber non-image files...
 # Query screen size and resize image in image page suitably???
+#
+# Alteration commands...  Rename, add to category/categories
 
 # Change this to the appropriate directory.
 ALBUMDIR = "/home/icefox/my.src/gallerifrey/album"
