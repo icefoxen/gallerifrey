@@ -14,7 +14,7 @@
 # Alteration commands...  Rename, add to category/categories
 
 # Change this to the appropriate directory.
-ALBUMDIR = "/home/icefox/my.src/gallerifrey/album"
+ALBUMDIR = "/srv/www/alopex.li/htdocs/album"
 # Change this to the title you want
 TITLE = "Gallerifrey"
 
