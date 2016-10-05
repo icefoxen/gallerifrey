@@ -14,9 +14,9 @@
 # Alteration commands...  Rename, add to category/categories
 
 # Change this to the appropriate directory.
-ALBUMDIR = "/srv/www/alopex.li/htdocs/album"
+ALBUMDIR = "/srv/www/alopex.li/htdocs/hwfulcrum/album"
 # Change this to the title you want
-TITLE = "Gallerifrey"
+TITLE = "HW Fulcrum"
 
 
 #### DON'T CHANGE ANYTHING BELOW THIS ####
@@ -35,6 +35,28 @@ HTMLDIR = ALBUMDIR
 INDEXFILE = os.path.join(ALBUMDIR, "index.html")
 
 IMAGEFILES =  [".png", ".jpg", ".gif", ".tiff"]
+
+def setup():
+    try:
+        print "Making", IMAGEDIR
+        os.makedirs(IMAGEDIR)
+    except:
+        pass
+    try:
+        print "Making", THUMBDIR
+        os.makedirs(THUMBDIR)
+    except:
+        pass
+    try:
+        print "Making", CATEGORYDIR
+        os.makedirs(CATEGORYDIR)
+    except:
+        pass
+    try:
+        print "Making", HTMLDIR
+        os.makedirs(HTMLDIR)
+    except:
+        pass
 
 def fileHasExt(f, extension):
     (_, ext) = os.path.splitext(f)
@@ -55,6 +77,8 @@ def prettyPageName(name):
 
 def getThumbnailName(image):
     return os.path.join("thumbs", image)
+
+
 
 def getImageFiles(where=IMAGEDIR):
     "Returns a list of all image file names in the given dir (defaults to IMAGEDIR)."
@@ -501,7 +525,11 @@ def main():
     print("Generating pages...")
     createHTML(imgs)
     firstindex = os.path.join(ALBUMDIR, getIndexPageName("all", 0))
-    shutil.copyfile(firstindex, INDEXFILE)
+    try:
+        shutil.copyfile(firstindex, INDEXFILE)
+    except IOError:
+        print("ERROR:")
+        print("No generated index found, try adding an image to categorize and rerunning")
     print("Done!")
 
 ###############################################################
@@ -544,4 +572,5 @@ You still need to create the category dir."""
 
 
 if __name__ == '__main__':
+    setup()
     main()
